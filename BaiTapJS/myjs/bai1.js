@@ -1,14 +1,14 @@
-function isSoNguyenTo(x) {
+function isSoNguyenTo(num) {
     var dem=0;
     var i;
-    if (x <=2 ) return 0;
-    else {
-        for (i=1; i <= x; i++)
-            if (x%i == 0)
-                dem++;
-            if (dem  == 2 )
-                return 1; else return 0;
-    } 
+    if (num <2 ) return 0;
+    var temp = Math.sqrt(num);
+    
+    for (i=2; i <= temp; i++)
+        if (num%i == 0)
+            return 0;
+    return 1;
+    
     
 }
 function SoNguyenTo(){
@@ -19,7 +19,6 @@ function SoNguyenTo(){
         if (isSoNguyenTo(x)){
             temp++;
             rl += " " + x;
-            
             x++;
         }
         else x++;
@@ -27,39 +26,21 @@ function SoNguyenTo(){
     document.getElementById("resultSNT").innerHTML = rl;
 }
 // Check số hoàn hảo
-function isSoNguyenTo2(x) {     /* Check SNT kể cả 2 */ 
-    var dem=0;
-    var i;
-    
-        for (i=1; i <= x; i++)
-            if (x%i == 0)
-                dem++;
-            if (dem  == 2 )
-                return 1; else return 0;
-    
-    
-}
-// function isSoHoanHao(num){
-//     var s=0;
-//     var i;
-//     for (i=1; i<= num/2 ; i++)
-//         if(num % i == 0)
-//             s+=i;
-//     if(s == num)
-//         return 1; else return 0;
-// }
 function SoHoanHao(){
     
     var rs= "";
     var temp = 1; var x=1;
     var shh;
-    while(temp <= 10 ){
-        if (isSoNguyenTo2(x)){
-            temp++;
-            shh = Math.pow(2,x-1) * (Math.pow(2,x) -1);
-            rs +=  shh+"<br>" ;
-            x++;
-            
+    while(temp <= 8 ){
+        if (isSoNguyenTo(Math.pow(2,x) -1)){
+            if (isSoNguyenTo(x)){
+                temp++;
+                shh = Math.pow(2,x-1) * (Math.pow(2,x) -1);
+                rs +=  shh+"<br>" ;
+                x++;
+                
+            }
+            else x++;
         }
         else x++;
     }
